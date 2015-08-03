@@ -2,6 +2,13 @@ acl:
     resource: "@ArtesanusBundle/Resources/config/routing/acl.yml"
     prefix: /acl
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group
+
 # login:
 #     pattern:   /login
 #     defaults:  { _controller: ACLBundle:Security:login }

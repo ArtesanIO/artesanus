@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Model;
+namespace ArtesanIO\ArtesanusBundle\Model;
 
 use Doctrine\ORM\EntityManager;
 use ArtesanIO\ACLBundle\Utils\Encoder;

@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Entity;
+namespace ArtesanIO\ArtesanusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

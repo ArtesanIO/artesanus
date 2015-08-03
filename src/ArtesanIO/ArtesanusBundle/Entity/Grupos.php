@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Entity;
+namespace ArtesanIO\ArtesanusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -84,10 +84,10 @@ class Grupos
     /**
      * Add usuarios
      *
-     * @param \ArtesanIO\ACLBundle\Entity\Usuarios $usuarios
+     * @param \ArtesanIO\ArtesanusBundle\Entity\Usuarios $usuarios
      * @return Grupos
      */
-    public function addUsuario(\ArtesanIO\ACLBundle\Entity\Usuarios $usuarios)
+    public function addUsuario(\ArtesanIO\ArtesanusBundle\Entity\Usuarios $usuarios)
     {
         $this->usuarios[] = $usuarios;
 
@@ -97,9 +97,9 @@ class Grupos
     /**
      * Remove usuarios
      *
-     * @param \ArtesanIO\ACLBundle\Entity\Usuarios $usuarios
+     * @param \ArtesanIO\ArtesanusBundle\Entity\Usuarios $usuarios
      */
-    public function removeUsuario(\ArtesanIO\ACLBundle\Entity\Usuarios $usuarios)
+    public function removeUsuario(\ArtesanIO\ArtesanusBundle\Entity\Usuarios $usuarios)
     {
         $this->usuarios->removeElement($usuarios);
     }
@@ -117,10 +117,10 @@ class Grupos
     /**
      * Add roles
      *
-     * @param \ArtesanIO\ACLBundle\Entity\GruposRoles $roles
+     * @param \ArtesanIO\ArtesanusBundle\Entity\GruposRoles $roles
      * @return Grupos
      */
-    public function addRole(\ArtesanIO\ACLBundle\Entity\GruposRoles $roles)
+    public function addRole(\ArtesanIO\ArtesanusBundle\Entity\GruposRoles $roles)
     {
         $roles->setGrupos($this);
         $this->roles->add($roles);
@@ -129,9 +129,9 @@ class Grupos
     /**
      * Remove roles
      *
-     * @param \ArtesanIO\ACLBundle\Entity\GruposRoles $roles
+     * @param \ArtesanIO\ArtesanusBundle\Entity\GruposRoles $roles
      */
-    public function removeRole(\ArtesanIO\ACLBundle\Entity\GruposRoles $roles)
+    public function removeRole(\ArtesanIO\ArtesanusBundle\Entity\GruposRoles $roles)
     {
         $this->roles->removeElement($roles);
     }
