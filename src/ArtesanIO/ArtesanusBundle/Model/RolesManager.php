@@ -1,9 +1,9 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Model;
+namespace ArtesanIO\ArtesanusBundle\Model;
 
 use Doctrine\ORM\EntityManager;
-use ArtesanIO\ACLBundle\Utils\SlugerRole as Sluger;
+use ArtesanIO\ArtesanusBundle\Utils\SlugerRole as Sluger;
 
 class RolesManager
 {

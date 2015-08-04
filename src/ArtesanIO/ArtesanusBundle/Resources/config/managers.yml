@@ -1,21 +1,21 @@
 services:
 
-    artesanio.usuarios_manager:
-        class: ArtesanIO\ArtesanusBundle\Model\UsuariosManager
+    artesanus.user_manager:
+        class: ArtesanIO\ArtesanusBundle\Model\UserManager
         arguments:
             - @doctrine.orm.entity_manager
-            - ArtesanIO\ArtesanusBundle\Entity\Usuarios
+            - ArtesanIO\ArtesanusBundle\Entity\User
             - @artesanio.encoder
 
-    artesanio.grupos_manager:
-        class: ArtesanIO\ArtesanusBundle\Model\GruposManager
+    artesanus.group_manager:
+        class: ArtesanIO\ArtesanusBundle\Model\GroupManager
         arguments:
             - @doctrine.orm.entity_manager
-            - ArtesanIO\ArtesanusBundle\Entity\Grupos
+            - ArtesanIO\ArtesanusBundle\Entity\Group
 
-    artesanio.roles_manager:
+    artesanus.roles_manager:
         class: ArtesanIO\ArtesanusBundle\Model\RolesManager
         arguments:
             - @doctrine.orm.entity_manager
             - ArtesanIO\ArtesanusBundle\Entity\Roles
-            - @artesanio.sluger_role
+            - @artesanus.sluger_role

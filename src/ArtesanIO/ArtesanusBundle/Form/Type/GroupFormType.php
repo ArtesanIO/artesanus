@@ -20,7 +20,6 @@ class GroupFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         $builder
         ->add('roles','choice', array(
             'choices'   => $this->getRoles(),

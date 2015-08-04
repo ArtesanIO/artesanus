@@ -3,9 +3,9 @@
 namespace ArtesanIO\ArtesanusBundle\Model;
 
 use Doctrine\ORM\EntityManager;
-use ArtesanIO\ACLBundle\Utils\Encoder;
+use ArtesanIO\ArtesanusBundle\Utils\Encoder;
 
-class UsuariosManager
+class UserManager
 {
 
     protected $em;

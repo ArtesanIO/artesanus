@@ -1,4 +1,4 @@
-{% extends 'ACLBundle::layout.html.twig' %}
+{% extends 'ArtesanusBundle::layout.html.twig' %}
 
 {% block titulo %}Grupos{% endblock %}
 {% block botonera %}
@@ -32,7 +32,7 @@
             <td>{{ grupo.name }}</td>
             <td class="text-right">
                 <div class="btn-group">
-                    <a href="{{ path('grupo', {id: grupo.name }) }}" class="btn btn-default">
+                    <a href="{{ path('grupo', {id: grupo.id }) }}" class="btn btn-default">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                     <button type="button" class="btn btn-default">

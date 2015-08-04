@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Utils;
+namespace ArtesanIO\ArtesanusBundle\Utils;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactory;

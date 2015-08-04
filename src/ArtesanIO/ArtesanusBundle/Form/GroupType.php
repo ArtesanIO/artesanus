@@ -1,12 +1,12 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Form;
+namespace ArtesanIO\ArtesanusBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class GruposType extends AbstractType
+class GroupType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,7 +15,14 @@ class GruposType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('grupo')
+            ->add('name')
+            ->add('roles')
+            // ->add('roles','choice', array(
+            //     'choices'   => $this->getRoles(),
+            //     'data'      => $this->grupo->getRoles(),
+            //     'expanded'  => true,
+            //     'multiple'  => true
+            // ))
         ;
     }
 
@@ -25,7 +32,7 @@ class GruposType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ArtesanIO\ACLBundle\Entity\Grupos'
+            'data_class' => 'ArtesanIO\ArtesanusBundle\Entity\Group'
         ));
     }
 
@@ -34,6 +41,6 @@ class GruposType extends AbstractType
      */
     public function getName()
     {
-        return 'artesanio_acl_grupos';
+        return 'artesanus_group_type';
     }
 }

@@ -36,19 +36,17 @@ class Roles
     private $roleKey;
 
     /**
-     * @ORM\OneToMany(targetEntity="UsuariosRoles", mappedBy="roles")
+     * Constructor
      */
-    private $usuarios;
-
-    /**
-     * @ORM\OneToMany(targetEntity="GruposRoles", mappedBy="roles")
-     */
-    private $grupos;
+    public function __construct()
+    {
+        $this->grupos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -71,7 +69,7 @@ class Roles
     /**
      * Get role
      *
-     * @return string
+     * @return string 
      */
     public function getRole()
     {
@@ -94,84 +92,10 @@ class Roles
     /**
      * Get roleKey
      *
-     * @return string
+     * @return string 
      */
     public function getRoleKey()
     {
         return $this->roleKey;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->grupos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add usuarios
-     *
-     * @param \ArtesanIO\ACLBundle\Entity\UsuariosRoles $usuarios
-     * @return Roles
-     */
-    public function addUsuario(\ArtesanIO\ACLBundle\Entity\UsuariosRoles $usuarios)
-    {
-        $this->usuarios[] = $usuarios;
-
-        return $this;
-    }
-
-    /**
-     * Remove usuarios
-     *
-     * @param \ArtesanIO\ACLBundle\Entity\UsuariosRoles $usuarios
-     */
-    public function removeUsuario(\ArtesanIO\ACLBundle\Entity\UsuariosRoles $usuarios)
-    {
-        $this->usuarios->removeElement($usuarios);
-    }
-
-    /**
-     * Get usuarios
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsuarios()
-    {
-        return $this->usuarios;
-    }
-
-    /**
-     * Add grupos
-     *
-     * @param \ArtesanIO\ACLBundle\Entity\GruposRoles $grupos
-     * @return Roles
-     */
-    public function addGrupo(\ArtesanIO\ACLBundle\Entity\GruposRoles $grupos)
-    {
-        $this->grupos[] = $grupos;
-
-        return $this;
-    }
-
-    /**
-     * Remove grupos
-     *
-     * @param \ArtesanIO\ACLBundle\Entity\GruposRoles $grupos
-     */
-    public function removeGrupo(\ArtesanIO\ACLBundle\Entity\GruposRoles $grupos)
-    {
-        $this->grupos->removeElement($grupos);
-    }
-
-    /**
-     * Get grupos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getGrupos()
-    {
-        return $this->grupos;
     }
 }

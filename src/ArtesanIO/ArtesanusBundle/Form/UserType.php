@@ -5,9 +5,10 @@ namespace ArtesanIO\ArtesanusBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use ArtesanIO\ArtesanusBundle\Form\EventListener\UsuariosSubscriber;
 
-class UsuariosType extends AbstractType
+use ArtesanIO\ArtesanusBundle\Form\EventListener\UserSubscriber;
+
+class UserType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,18 +16,7 @@ class UsuariosType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('grupos', 'entity', array(
-                'class' => 'ArtesanIO\ArtesanusBundle\Entity\Grupos',
-                'property' => 'grupo'
-            ))
-            ->add('nombre')
-            ->add('username')
-            ->add('email')
-            ->add('isActive')
-        ;
-
-        $builder->addEventSubscriber(new UsuariosSubscriber());
+        $builder->addEventSubscriber(new UserSubscriber());
     }
 
     /**
@@ -35,7 +25,7 @@ class UsuariosType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ArtesanIO\ArtesanusBundle\Entity\Usuarios'
+            'data_class' => 'ArtesanIO\ArtesanusBundle\Entity\User'
         ));
     }
 
@@ -44,6 +34,6 @@ class UsuariosType extends AbstractType
      */
     public function getName()
     {
-        return 'artesanio_acl_usuarios';
+        return 'artesanus_user_type';
     }
 }

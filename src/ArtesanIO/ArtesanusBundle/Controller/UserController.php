@@ -5,50 +5,47 @@ namespace ArtesanIO\ArtesanusBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class UsuariosController extends Controller
+class UserController extends Controller
 {
-    public function usuariosAction()
+    public function usersAction()
     {
 
-        $users = $this->get('fos_user.user_manager')->findUsers();
-
-        //$usuarios = $this->get('artesanio.usuarios_manager')->findAll();
+        $users = $this->get('artesanus.user_manager')->findAll();
 
         return $this->render('ArtesanusBundle:Usuarios:usuarios.html.twig', array(
             'usuarios' => $users
         ));
     }
 
-    public function crearAction(Request $request)
+    public function newAction(Request $request)
     {
-        $usuario = $this->get('artesanio.usuarios_manager')->getClass();
+        // $formFactory = $this->get('fos_user.registration.form.factory');
+        $userManager = $this->get('artesanus.user_manager');
 
-        $usuarioForm = $this->createForm('artesanio_acl_usuarios', $usuario)->handleRequest($request);
+        $user = $userManager->getClass();
+        //$user->setEnabled(true);
 
-        if($usuarioForm->isValid()){
+        $userForm = $this->createForm('artesanus_user_type', $user);
 
-            $this->get('artesanio.usuarios_manager')->save($usuario);
+        $userForm->handleRequest($request);
 
-            $this->get('artesanio.flashers')->add('success','Usuarios creado');
-
-            return $this->redirect($this->generateUrl('usuario', array('id' => $usuario->getId())));
+        if ($userForm->isValid()) {
+            $userManager->save($user);
+            //return $this->redirect($this->generateUrl('route', array(query)));
         }
 
-        return $this->render('ACLBundle:Usuarios:usuarios-crear.html.twig', array(
-            'usuario_form' => $usuarioForm->createView()
+        return $this->render('ArtesanusBundle:Usuarios:usuarios-crear.html.twig', array(
+            'usuario_form' => $userForm->createView()
         ));
     }
 
-    public function usuarioAction(Request $request, $id)
+    public function userAction(Request $request, $id)
     {
         $userManager = $this->get('fos_user.user_manager');
 
         $user = $userManager->findUserByUsername($id);
 
-        $formFactory = $this->get('fos_user.profile.form.factory');
-
-        $form = $formFactory->createForm();
-        $form->setData($user);
+        $form = $this->createForm('artesanus_user_type', $user);
 
         $form->handleRequest($request);
 
@@ -70,7 +67,7 @@ class UsuariosController extends Controller
             return $this->redirect($this->generateUrl('usuario', array('id' => $user->getUsername())));
         }
 
-        return $this->render('ACLBundle:Usuarios:usuario.html.twig', array(
+        return $this->render('ArtesanusBundle:Usuarios:usuario.html.twig', array(
             'usuario_form' => $form->createView(),
             'usuario_password_form' => $usuarioPasswordForm->createView()
         ));

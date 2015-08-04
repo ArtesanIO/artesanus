@@ -7,12 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ArtesanIO\ACLBundle\Form\Type\GroupFormType;
 
 
-class GruposController extends Controller
+class GroupController extends Controller
 {
-    public function gruposAction()
+    public function groupsAction()
     {
-        //$grupos = $this->get('artesanio.grupos_manager')->findAll();
-
         $grupos = $this->get('fos_user.group_manager')->findGroups();
 
         return $this->render('ArtesanusBundle:Grupos:grupos.html.twig', array(
@@ -20,17 +18,22 @@ class GruposController extends Controller
         ));
     }
 
-    public function crearAction(Request $request)
+    public function newAction(Request $request)
     {
-        $grupo = $this->get('artesanio.grupos_manager')->getClass();
 
-        $grupoForm = $this->createForm('artesanio_acl_grupos', $grupo)->handleRequest($request);
+        $groupManager = $this->get('artesanus.group_manager');
+
+        $group = $groupManager->getClass();
+
+        //$grupo = $this->get('artesanio.grupos_manager')->getClass();
+
+        $grupoForm = $this->createForm('artesanus_group_type', $group)->handleRequest($request);
 
         if($grupoForm->isValid()){
 
-            $this->get('artesanio.grupos_manager')->save($grupo);
+            $this->get('artesanus.group_manager')->save($group);
 
-            return $this->redirect($this->generateUrl('grupo', array('id' => $grupo->getId())));
+            return $this->redirect($this->generateUrl('grupo', array('id' => $group->getId())));
         }
 
         return $this->render('ArtesanusBundle:Grupos:grupos-crear.html.twig', array(
@@ -38,19 +41,15 @@ class GruposController extends Controller
         ));
     }
 
-    public function grupoAction(Request $request, $id)
+    public function groupAction(Request $request, $id)
     {
-        $grupoManager = $this->get('fos_user.group_manager');
+        $groupManager = $this->get('artesanus.group_manager');
 
-        $grupo = $grupoManager->findGroupByName($id);
+        $group = $groupManager->find($id);
 
-        // $formFactory = $this->get('fos_user.group.form.factory');
-        //
-        // $grupoForm = $formFactory->createForm();
-        // $grupoForm->setData($grupo);
+        $roles = $this->get('artesanus.roles_manager')->findAll();
 
-        $roles = $this->get('artesanio.roles_manager')->findAll();
-
+        /*
         $grupoForm = $this->createForm(new GroupFormType($grupo, $roles), $grupo);
 
         $grupoForm->handleRequest($request);
@@ -66,10 +65,13 @@ class GruposController extends Controller
             return $this->redirect($this->generateUrl('grupo', array('id' => $grupo->getName())));
 
         }
+        */
+
+        $groupForm = $this->createForm('artesanus_group_type', $group);
 
         return $this->render('ArtesanusBundle:Grupos:grupo.html.twig', array(
-            'grupo'            => $grupo,
-            'grupo_form'       => $grupoForm->createView(),
+            'grupo'            => $group,
+            'grupo_form'       => $groupForm->createView(),
         ));
     }
 }

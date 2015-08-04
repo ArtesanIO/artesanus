@@ -1,13 +1,12 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Model;
+namespace ArtesanIO\ArtesanusBundle\Model;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Collections\ArrayCollection;
 
-class GruposManager
+class GroupManager
 {
-
     protected $em;
     protected $class;
     protected $repository;
@@ -33,7 +32,7 @@ class GruposManager
 
     public function getClass()
     {
-        return new $this->class;
+        return new $this->class('');
     }
 
     public function save($model)

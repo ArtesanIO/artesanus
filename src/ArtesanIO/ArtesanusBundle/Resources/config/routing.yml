@@ -1,5 +1,5 @@
-acl:
-    resource: "@ArtesanusBundle/Resources/config/routing/acl.yml"
+admin:
+    resource: "@ArtesanusBundle/Resources/config/routing/all.yml"
     prefix: /acl
 
 fos_user:

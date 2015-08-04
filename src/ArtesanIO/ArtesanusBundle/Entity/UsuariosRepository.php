@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Entity;
+namespace ArtesanIO\ArtesanusBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -17,7 +17,7 @@ class UsuariosRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT u FROM ArtesanIO\ACLBundle\Entity\Usuarios u
+                'SELECT u FROM ArtesanIO\ArtesanusBundle\Entity\Usuarios u
                  WHERE u.username = :username
                  OR u.email = :email
                 '

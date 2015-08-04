@@ -22,10 +22,9 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="El nombre es obligatorio")
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $nombre;
+    private $name;
 
     /**
      * @ORM\ManyToMany(targetEntity="ArtesanIO\ArtesanusBundle\Entity\Group")
@@ -106,5 +105,28 @@ class User extends BaseUser
     public function getGroups()
     {
         return $this->groups;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }
