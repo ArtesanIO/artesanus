@@ -8,23 +8,14 @@
     </head>
     <body>
 
-        {% include 'ArtesanusBundle::includes/nav-bar.html.twig' %}
-        <div id="content-wrap">
-
-            <div class="page-header">
-                <h3>{% block title %}{% endblock %} <small>{% block subtitle %}{% endblock %}</small></h3>
-                <hr>
-                <div class="btn-group">
-                    {% include 'ArtesanusBundle::includes/acl-navbar.html.twig' %}
-                </div>
-            </div>
-
+        <div id="wrap-security">
             <div class="panel panel-default">
                 <div class="panel-body">
                     {% block body %}{% endblock %}
                 </div>
             </div>
         </div>
+
 
         <script src="{{ asset('js/jquery.min.js') }}" charset="utf-8"></script>
         <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}" charset="utf-8"></script>

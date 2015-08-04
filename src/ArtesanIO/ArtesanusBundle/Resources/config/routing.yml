@@ -9,9 +9,9 @@ fos_user_group:
     resource: "@FOSUserBundle/Resources/config/routing/group.xml"
     prefix: /group
 
-# login:
-#     pattern:   /login
-#     defaults:  { _controller: ACLBundle:Security:login }
-#
-# login_check:
-#     pattern:   /login_check
+login:
+    pattern:   /login
+    defaults:  { _controller: ACLBundle:Security:login }
+
+login_check:
+    pattern:   /login_check

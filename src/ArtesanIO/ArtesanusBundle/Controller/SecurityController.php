@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Controller;
+namespace ArtesanIO\ArtesanusBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +24,7 @@ class SecurityController extends Controller
         }
 
         return $this->render(
-            'ACLBundle:Security:login.html.twig',
+            'ArtesanusBundle:Security:login.html.twig',
             array(
                 // last username entered by the user
                 'last_username' => $session->get(SecurityContext::LAST_USERNAME),
