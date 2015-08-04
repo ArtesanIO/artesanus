@@ -5,25 +5,25 @@ namespace ArtesanIO\ArtesanusBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use ArtesanIO\ArtesanusBundle\Model\RolesManager;
+use ArtesanIO\ArtesanusBundle\Form\EventListener\GroupSubscriber;
 
 class GroupType extends AbstractType
 {
+    protected $roles;
+
+    public function __construct(RolesManager $roles)
+    {
+        $this->roles = $roles;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name')
-            ->add('roles')
-            // ->add('roles','choice', array(
-            //     'choices'   => $this->getRoles(),
-            //     'data'      => $this->grupo->getRoles(),
-            //     'expanded'  => true,
-            //     'multiple'  => true
-            // ))
-        ;
+        $builder->addEventSubscriber(new GroupSubscriber($this->roles));
     }
 
     /**

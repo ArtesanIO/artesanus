@@ -11,6 +11,8 @@ services:
 
     artesanus.group_type:
         class: ArtesanIO\ArtesanusBundle\Form\GroupType
+        arguments:
+            - @artesanus.roles_manager
         tags:
             - { name: form.type, alias: artesanus_group_type }
 
@@ -19,10 +21,10 @@ services:
         tags:
             - { name: form.type, alias: artesanio_acl_grupo_roles }
 
-    artesanio.roles_type:
+    artesanus.roles_type:
         class: ArtesanIO\ArtesanusBundle\Form\RolesType
         tags:
-            - { name: form.type, alias: artesanio_acl_roles }
+            - { name: form.type, alias: artesanus_acl_roles }
 
     artesanus.user_type:
         class: ArtesanIO\ArtesanusBundle\Form\UserType

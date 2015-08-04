@@ -4,7 +4,7 @@ namespace ArtesanIO\ArtesanusBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use ArtesanIO\ACLBundle\Form\Type\GroupFormType;
+use ArtesanIO\ACLBundle\Form\GroupType;
 
 
 class GroupController extends Controller
@@ -27,6 +27,7 @@ class GroupController extends Controller
 
         //$grupo = $this->get('artesanio.grupos_manager')->getClass();
 
+        //$grupoForm = $this->createForm('artesanus_group_type', $group)->handleRequest($request);
         $grupoForm = $this->createForm('artesanus_group_type', $group)->handleRequest($request);
 
         if($grupoForm->isValid()){

@@ -1,6 +1,6 @@
 <?php
 
-namespace ArtesanIO\ACLBundle\Form;
+namespace ArtesanIO\ArtesanusBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +25,7 @@ class RolesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ArtesanIO\ACLBundle\Entity\Roles'
+            'data_class' => 'ArtesanIO\ArtesanusBundle\Entity\Roles'
         ));
     }
 
@@ -34,6 +34,6 @@ class RolesType extends AbstractType
      */
     public function getName()
     {
-        return 'artesanio_acl_roles';
+        return 'artesanus_acl_roles';
     }
 }

@@ -9,7 +9,7 @@ class RolesController extends Controller
 {
     public function rolesAction()
     {
-        $roles = $this->get('artesanio.roles_manager')->findAll();
+        $roles = $this->get('artesanus.roles_manager')->findAll();
 
         return $this->render('ArtesanusBundle:Roles:roles.html.twig', array(
             'roles' => $roles
@@ -18,13 +18,13 @@ class RolesController extends Controller
 
     public function crearAction(Request $request)
     {
-        $role = $this->get('artesanio.roles_manager')->getClass();
+        $role = $this->get('artesanus.roles_manager')->getClass();
 
-        $roleForm = $this->createForm('artesanio_acl_roles', $role)->handleRequest($request);
+        $roleForm = $this->createForm('artesanus_acl_roles', $role)->handleRequest($request);
 
         if($roleForm->isValid()){
 
-            $this->get('artesanio.roles_manager')->save($role);
+            $this->get('artesanus.roles_manager')->save($role);
 
             return $this->redirect($this->generateUrl('role', array('id' => $role->getId())));
         }
@@ -36,13 +36,13 @@ class RolesController extends Controller
 
     public function roleAction(Request $request, $id)
     {
-        $role = $this->get('artesanio.roles_manager')->find($id);
+        $role = $this->get('artesanus.roles_manager')->find($id);
 
-        $roleForm = $this->createForm('artesanio_acl_roles', $role)->handleRequest($request);
+        $roleForm = $this->createForm('artesanus_acl_roles', $role)->handleRequest($request);
 
         if($roleForm->isValid()){
 
-            $this->get('artesanio.roles_manager')->update();
+            $this->get('artesanus.roles_manager')->update();
 
             return $this->redirect($this->generateUrl('role', array('id' => $role->getId())));
         }

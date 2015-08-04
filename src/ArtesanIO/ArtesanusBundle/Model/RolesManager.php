@@ -13,7 +13,7 @@ class RolesManager
     protected $repository;
     protected $sluger;
 
-    public function __construct(EntityManager $em, $class, Sluger $sluger)
+    public function __construct(EntityManager $em, $class, Sluger $sluger = null)
     {
         $this->em = $em;
         $this->repository = $em->getRepository($class);
