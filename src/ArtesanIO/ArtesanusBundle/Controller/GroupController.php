@@ -25,20 +25,19 @@ class GroupController extends Controller
 
         $group = $groupManager->getClass();
 
-        //$grupo = $this->get('artesanio.grupos_manager')->getClass();
+        $groupForm = $this->createForm('artesanus_group_type', $group)->handleRequest($request);
 
-        //$grupoForm = $this->createForm('artesanus_group_type', $group)->handleRequest($request);
-        $grupoForm = $this->createForm('artesanus_group_type', $group)->handleRequest($request);
-
-        if($grupoForm->isValid()){
+        if($groupForm->isValid()){
 
             $this->get('artesanus.group_manager')->save($group);
+
+            $groupManager->addRoles($group, $groupForm);
 
             return $this->redirect($this->generateUrl('grupo', array('id' => $group->getId())));
         }
 
         return $this->render('ArtesanusBundle:Grupos:grupos-crear.html.twig', array(
-            'grupo_form' => $grupoForm->createView()
+            'grupo_form' => $groupForm->createView()
         ));
     }
 
@@ -50,25 +49,15 @@ class GroupController extends Controller
 
         $roles = $this->get('artesanus.roles_manager')->findAll();
 
-        /*
-        $grupoForm = $this->createForm(new GroupFormType($grupo, $roles), $grupo);
+        $groupForm = $this->createForm('artesanus_group_type', $group)->handleRequest($request);
 
-        $grupoForm->handleRequest($request);
+        if($groupForm->isValid()){
 
-        if($grupoForm->isValid()){
+            $groupManager->addRoles($group, $groupForm);
 
-            $grupo->setRoles(array());
-            foreach($grupoForm->get('roles')->getData() as $role){
-                $grupo->addRole($role);
-            }
-
-            $grupoManager->updateGroup($grupo);
-            return $this->redirect($this->generateUrl('grupo', array('id' => $grupo->getName())));
+            return $this->redirect($this->generateUrl('grupo', array('id' => $group->getId())));
 
         }
-        */
-
-        $groupForm = $this->createForm('artesanus_group_type', $group);
 
         return $this->render('ArtesanusBundle:Grupos:grupo.html.twig', array(
             'grupo'            => $group,

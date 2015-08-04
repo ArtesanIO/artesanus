@@ -77,6 +77,16 @@ class GroupManager
         $this->em->flush();
     }
 
+    public function addRoles($model, $form)
+    {
+        $model->setRoles(array());
+        foreach($form->get('roles')->getData() as $role){
+            $model->addRole($role);
+        }
+
+        $this->update();
+    }
+
 }
 
 
