@@ -1,15 +1,18 @@
 {% extends 'ArtesanusBundle::layout.html.twig' %}
 
-{% block titulo %}Crear Grupo{% endblock %}
+{% block title %}Crear Grupo{% endblock %}
 
 
 {% block body %}
-    <form class="form" action="" method="post" novalidate>
-        {{ form_widget(grupo_form) }}
-        <div class="btn-group btn-group-sm">
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
-            </button>
-        </div>
-    </form>
+    <div class="col-md-6">
+        <form class="form" action="" method="post" novalidate>
+            {{ form_widget(grupo_form) }}
+            <div class="btn-group btn-group-sm">
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+
 {% endblock %}

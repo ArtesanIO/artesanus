@@ -1,6 +1,6 @@
 admin:
     resource: "@ArtesanusBundle/Resources/config/routing/all.yml"
-    prefix: /acl
+    prefix: /admin
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
